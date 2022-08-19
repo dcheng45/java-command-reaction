@@ -1,4 +1,4 @@
-package com.drewcheng.command;
+package com.drewcheng.cr.command;
 
 import java.util.HashMap;
 import java.util.Map;

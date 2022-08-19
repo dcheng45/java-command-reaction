@@ -1,6 +1,6 @@
-package unit.com.drewcheng.command;
+package unit.com.drewcheng.cr;
 
-import com.drewcheng.command.Reaction;
+import com.drewcheng.cr.command.Reaction;
 
 public class TestCommandReaction implements Reaction<TestCommand, TestCommand.Response> {
     @Override

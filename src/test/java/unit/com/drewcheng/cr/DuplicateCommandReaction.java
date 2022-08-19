@@ -1,6 +1,6 @@
-package unit.com.drewcheng.command;
+package unit.com.drewcheng.cr;
 
-import com.drewcheng.command.Reaction;
+import com.drewcheng.cr.command.Reaction;
 
 public class DuplicateCommandReaction implements Reaction<DuplicateCommand, DuplicateCommand.Response> {
     @Override

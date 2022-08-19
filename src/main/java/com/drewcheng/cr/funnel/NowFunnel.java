@@ -1,4 +1,9 @@
-package com.drewcheng.command;
+package com.drewcheng.cr.funnel;
+
+import com.drewcheng.cr.command.Command;
+import com.drewcheng.cr.command.CommandResponse;
+import com.drewcheng.cr.command.CommandRouter;
+import com.drewcheng.cr.command.Reaction;
 
 public class NowFunnel implements Now {
     @Override

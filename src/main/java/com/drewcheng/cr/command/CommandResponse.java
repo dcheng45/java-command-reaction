@@ -1,3 +1,3 @@
-package com.drewcheng.command;
+package com.drewcheng.cr.command;
 
 public interface CommandResponse {}

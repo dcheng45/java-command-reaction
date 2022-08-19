@@ -1,4 +1,6 @@
-package com.drewcheng.command;
+package com.drewcheng.cr.command;
+
+import com.drewcheng.cr.funnel.Now;
 
 public interface Command<R extends CommandResponse> {
 

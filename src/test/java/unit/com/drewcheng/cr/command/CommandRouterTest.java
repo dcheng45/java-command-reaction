@@ -1,10 +1,11 @@
-package unit.com.drewcheng.command;
+package unit.com.drewcheng.cr.command;
 
-import com.drewcheng.command.Command;
-import com.drewcheng.command.CommandResponse;
-import com.drewcheng.command.CommandRouter;
-import com.drewcheng.command.Reaction;
+import com.drewcheng.cr.command.Command;
+import com.drewcheng.cr.command.CommandResponse;
+import com.drewcheng.cr.command.CommandRouter;
+import com.drewcheng.cr.command.Reaction;
 import org.junit.jupiter.api.Test;
+import unit.com.drewcheng.cr.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
