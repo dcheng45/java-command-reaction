@@ -21,4 +21,8 @@ public class CommandRouter {
         }
         return reaction;
     }
+
+    public static void clearRoutes() {
+        routes.clear();
+    }
 }

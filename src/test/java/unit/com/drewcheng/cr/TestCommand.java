@@ -5,6 +5,6 @@ import com.drewcheng.cr.command.CommandResponse;
 
 public class TestCommand implements Command<TestCommand.Response> {
 
-    record Response(Boolean success) implements CommandResponse {}
+    public record Response(Boolean success) implements CommandResponse {}
 
 }
