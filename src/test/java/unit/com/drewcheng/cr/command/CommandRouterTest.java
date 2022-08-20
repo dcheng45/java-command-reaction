@@ -4,7 +4,6 @@ import com.drewcheng.cr.command.Command;
 import com.drewcheng.cr.command.CommandResponse;
 import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.command.Reaction;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import unit.com.drewcheng.cr.*;
@@ -15,18 +14,13 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CommandRouterTest {
 
-    TestCommand testCommand = new TestCommand();
     TestCommandReaction testCommandReaction = new TestCommandReaction();
-
-    @AfterEach
-    void afterEach() {
-        CommandRouter.clearRoutes();
-    }
 
     @Test
     void givenExistingCommand_whenRoute_thenReturnReaction() {
-        CommandRouter.addRoute(TestCommand.class.getName(), testCommandReaction);
-        Reaction<Command<CommandResponse>, CommandResponse> reaction = CommandRouter.route(TestCommand.class.getName());
+        CommandRouter router = new CommandRouter();
+        router.addRoute(TestCommand.class, testCommandReaction);
+        Reaction<Command<CommandResponse>, CommandResponse> reaction = router.route(TestCommand.class);
 
         assertThat(reaction).isNotNull();
         assertThat(reaction.getClass()).isEqualTo(TestCommandReaction.class);
@@ -34,16 +28,18 @@ public class CommandRouterTest {
 
     @Test
     void givenNonExistingCommand_whenRoute_thenThrowNoReactionError() {
+        CommandRouter router = new CommandRouter();
         assertThatExceptionOfType(IllegalStateException.class)
-                .isThrownBy(() -> CommandRouter.route(TestCommand.class.getName()))
+                .isThrownBy(() -> router.route(TestCommand.class))
                 .withMessage("Reaction not found for command: " + TestCommand.class.getName());
     }
 
     @Test
     void givenExistingCommand_whenAddRoute_thenThrowAlreadyExistsError() {
-        CommandRouter.addRoute(TestCommand.class.getName(), testCommandReaction);
+        CommandRouter router = new CommandRouter();
+        router.addRoute(TestCommand.class, testCommandReaction);
         assertThatExceptionOfType(IllegalStateException.class)
-                .isThrownBy(() -> CommandRouter.addRoute(TestCommand.class.getName(), testCommandReaction))
+                .isThrownBy(() -> router.addRoute(TestCommand.class, testCommandReaction))
                 .withMessage("Reaction already exists for command: " + TestCommand.class.getName());
     }
 }

@@ -6,10 +6,16 @@ import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.command.Reaction;
 
 public class NowFunnel implements Now {
+
+    private final CommandRouter router;
+
+    public NowFunnel(CommandRouter router) {
+        this.router = router;
+    }
+
     @Override
     public <R extends CommandResponse, C extends Command<R>> R execute(C command) {
-        String commandName = command.getClass().getName();
-        Reaction<Command<CommandResponse>, CommandResponse> reaction = CommandRouter.route(commandName);
+        Reaction<Command<CommandResponse>, CommandResponse> reaction = router.route(command.getClass());
         return (R) reaction.react((Command<CommandResponse>) command);
     }
 }

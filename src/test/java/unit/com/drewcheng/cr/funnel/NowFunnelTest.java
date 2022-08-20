@@ -3,7 +3,6 @@ package unit.com.drewcheng.cr.funnel;
 import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.funnel.Now;
 import com.drewcheng.cr.funnel.NowFunnel;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import unit.com.drewcheng.cr.TestCommand;
@@ -15,18 +14,14 @@ import static org.mockito.Mockito.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class NowFunnelTest {
 
-    @BeforeAll
-    void beforeAll() {
-        CommandRouter.clearRoutes();
-    }
-
     @Test
     void givenCommand_whenExecute_thenReturnCommandResponse() {
         TestCommand testCommand = new TestCommand();
         TestCommandReaction testCommandReaction = new TestCommandReaction();
         TestCommandReaction testCommandReactionSpy = spy(testCommandReaction);
-        CommandRouter.addRoute(TestCommand.class.getName(), testCommandReactionSpy);
-        Now now = new NowFunnel();
+        CommandRouter router = new CommandRouter();
+        router.addRoute(TestCommand.class, testCommandReactionSpy);
+        Now now = new NowFunnel(router);
         TestCommand.Response response  = now.execute(testCommand);
 
         assertThat(response).isNotNull();
