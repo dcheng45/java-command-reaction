@@ -1,6 +1,7 @@
 package com.drewcheng.cr.command;
 
 import com.drewcheng.cr.TestCommand;
+import com.google.common.reflect.TypeToken;
 import org.junit.jupiter.api.Test;
 import com.drewcheng.cr.TestCommandReaction;
 
@@ -17,5 +18,12 @@ public class ReactionTest {
 
         assertThat(response).isNotNull();
         assertThat(response.getClass()).isEqualTo(TestCommand.Response.class);
+    }
+
+    @Test
+    void whenCommandType_thenReturnReactionCommand() {
+        TestCommandReaction testCommandReaction = new TestCommandReaction();
+
+        assertThat(testCommandReaction.commandType()).isEqualTo(TypeToken.of(TestCommand.class));
     }
 }
