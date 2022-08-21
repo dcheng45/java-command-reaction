@@ -1,11 +1,9 @@
-package unit.com.drewcheng.cr.funnel;
+package com.drewcheng.cr.funnel;
 
 import com.drewcheng.cr.command.CommandRouter;
-import com.drewcheng.cr.funnel.Now;
-import com.drewcheng.cr.funnel.SimpleNow;
 import org.junit.jupiter.api.Test;
-import unit.com.drewcheng.cr.TestCommand;
-import unit.com.drewcheng.cr.TestCommandReaction;
+import com.drewcheng.cr.TestCommand;
+import com.drewcheng.cr.TestCommandReaction;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;

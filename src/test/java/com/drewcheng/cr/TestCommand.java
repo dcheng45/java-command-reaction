@@ -1,4 +1,4 @@
-package unit.com.drewcheng.cr;
+package com.drewcheng.cr;
 
 import com.drewcheng.cr.command.Command;
 import com.drewcheng.cr.command.CommandResponse;
