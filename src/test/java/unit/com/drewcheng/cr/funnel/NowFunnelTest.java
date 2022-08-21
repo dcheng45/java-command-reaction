@@ -11,14 +11,12 @@ import unit.com.drewcheng.cr.TestCommandReaction;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class NowFunnelTest {
 
     @Test
     void givenCommand_whenExecute_thenReturnCommandResponse() {
         TestCommand testCommand = new TestCommand();
-        TestCommandReaction testCommandReaction = new TestCommandReaction();
-        TestCommandReaction testCommandReactionSpy = spy(testCommandReaction);
+        TestCommandReaction testCommandReactionSpy = spy(new TestCommandReaction());
         CommandRouter router = new CommandRouter();
         router.addRoute(TestCommand.class, testCommandReactionSpy);
         Now now = new NowFunnel(router);
