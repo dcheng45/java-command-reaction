@@ -2,7 +2,7 @@ package unit.com.drewcheng.cr.funnel;
 
 import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.funnel.Future;
-import com.drewcheng.cr.funnel.FutureFunnel;
+import com.drewcheng.cr.funnel.SimpleFuture;
 import org.junit.jupiter.api.Test;
 import unit.com.drewcheng.cr.TestCommand;
 import unit.com.drewcheng.cr.TestCommandReaction;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.*;
 
-public class FutureFunnelTest {
+public class SimpleFutureTest {
 
     @Test
     void givenCommand_whenExecute_thenRunAsynchronously() {
@@ -22,7 +22,7 @@ public class FutureFunnelTest {
         TestCommandReaction testCommandReaction = new TestCommandReaction();
         CommandRouter router = new CommandRouter();
         router.addRoute(TestCommand.class, testCommandReaction);
-        Future future = new FutureFunnel(router);
+        Future future = new SimpleFuture(router);
 
         CompletableFuture<TestCommand.Response> response = future.execute(testCommand);
 
@@ -37,7 +37,7 @@ public class FutureFunnelTest {
         TestCommandReaction testCommandReactionSpy = spy(new TestCommandReaction());
         CommandRouter router = new CommandRouter();
         router.addRoute(TestCommand.class, testCommandReactionSpy);
-        Future future = new FutureFunnel(router);
+        Future future = new SimpleFuture(router);
 
         CompletableFuture<TestCommand.Response> response = future.execute(testCommand);
 

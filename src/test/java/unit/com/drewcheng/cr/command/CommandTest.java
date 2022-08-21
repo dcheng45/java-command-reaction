@@ -2,7 +2,7 @@ package unit.com.drewcheng.cr.command;
 
 import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.funnel.Now;
-import com.drewcheng.cr.funnel.NowFunnel;
+import com.drewcheng.cr.funnel.SimpleNow;
 import org.junit.jupiter.api.Test;
 import unit.com.drewcheng.cr.TestCommand;
 import unit.com.drewcheng.cr.TestCommandReaction;
@@ -17,7 +17,7 @@ public class CommandTest {
         TestCommandReaction testCommandReaction = new TestCommandReaction();
         CommandRouter router = new CommandRouter();
         router.addRoute(TestCommand.class, testCommandReaction);
-        Now now = new NowFunnel(router);
+        Now now = new SimpleNow(router);
 
         TestCommand.Response response = testCommand.execute(now);
 

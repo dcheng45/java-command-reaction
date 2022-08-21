@@ -2,16 +2,15 @@ package unit.com.drewcheng.cr.funnel;
 
 import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.funnel.Now;
-import com.drewcheng.cr.funnel.NowFunnel;
+import com.drewcheng.cr.funnel.SimpleNow;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import unit.com.drewcheng.cr.TestCommand;
 import unit.com.drewcheng.cr.TestCommandReaction;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-public class NowFunnelTest {
+public class SimpleNowTest {
 
     @Test
     void givenCommand_whenExecute_thenReturnCommandResponse() {
@@ -19,7 +18,7 @@ public class NowFunnelTest {
         TestCommandReaction testCommandReactionSpy = spy(new TestCommandReaction());
         CommandRouter router = new CommandRouter();
         router.addRoute(TestCommand.class, testCommandReactionSpy);
-        Now now = new NowFunnel(router);
+        Now now = new SimpleNow(router);
         TestCommand.Response response  = now.execute(testCommand);
 
         assertThat(response).isNotNull();

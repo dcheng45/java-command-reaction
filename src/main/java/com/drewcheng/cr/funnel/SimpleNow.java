@@ -5,11 +5,11 @@ import com.drewcheng.cr.command.CommandResponse;
 import com.drewcheng.cr.command.CommandRouter;
 import com.drewcheng.cr.command.Reaction;
 
-public class NowFunnel implements Now {
+public class SimpleNow implements Now {
 
     private final CommandRouter router;
 
-    public NowFunnel(CommandRouter router) {
+    public SimpleNow(CommandRouter router) {
         this.router = router;
     }
 

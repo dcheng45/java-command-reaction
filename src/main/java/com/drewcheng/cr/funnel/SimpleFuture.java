@@ -7,11 +7,11 @@ import com.drewcheng.cr.command.Reaction;
 
 import java.util.concurrent.CompletableFuture;
 
-public class FutureFunnel implements Future {
+public class SimpleFuture implements Future {
 
     private final CommandRouter router;
 
-    public FutureFunnel(CommandRouter router) {
+    public SimpleFuture(CommandRouter router) {
         this.router = router;
     }
 
